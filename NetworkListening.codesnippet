@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>@NetworkingListening</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import Alamofire
+
+protocol NetworkListeningDelegate: AnyObject {
+    func listeningToNetworkDisconnection(_ networkListening: NetworkListening)
+    func listeningToConnectionToWiFiNetwork(_ networkListening: NetworkListening)
+    func listeningToConnectionToCellularNetwork(_ networkListening: NetworkListening)
+}
+
+extension NetworkListeningDelegate {
+    func listeningToNetworkDisconnection(_ networkListening: NetworkListening) { }
+    func listeningToConnectionToWiFiNetwork(_ networkListening: NetworkListening) { }
+    func listeningToConnectionToCellularNetwork(_ networkListening: NetworkListening) { }
+}
+
+final class NetworkListening {
+    static let shared = NetworkListening()
+    
+    weak var delegate: NetworkListeningDelegate?
+    
+    private var isStarted = false
+    
+    private let networkManager = NetworkReachabilityManager(host: "www.apple.com")
+    
+    private init() { }
+    
+    func start(onQueue queue: DispatchQueue = .main) {
+        guard !isStarted else { return }
+        
+        isStarted.toggle()
+        networkManager!.startListening(onQueue: queue) { [weak self] (status) in
+            guard let self = self else { return }
+            switch status {
+            case .unknown, .notReachable:
+                self.delegate?.listeningToNetworkDisconnection(self)
+            case .reachable(.cellular):
+                self.delegate?.listeningToConnectionToCellularNetwork(self)
+            case .reachable(.ethernetOrWiFi):
+                self.delegate?.listeningToConnectionToWiFiNetwork(self)
+            }
+        }
+    }
+    
+    func stop() {
+        networkManager!.stopListening()
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DA3D320F-1ED8-4E9B-9C7F-780C57899ABC</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Networking Listening</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

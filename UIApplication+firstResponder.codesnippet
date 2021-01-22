@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>@UIApplication+firstResponder</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension UIApplication {
+    var firstResponder: UIResponder? {
+        var _firstResponder: UIResponder?
+        let reportAsFirstHandler = { (responder: UIResponder) -&gt; Void in
+            _firstResponder = responder
+        }
+        sendAction(#selector(UIResponder.reportAsFirst), to: nil, from: reportAsFirstHandler, for: nil)
+        return _firstResponder
+    }
+}
+
+extension UIResponder {
+    @objc fileprivate func reportAsFirst(_ sender: Any) {
+        if let handler = sender as? (UIResponder) -&gt; Void {
+            handler(self)
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3DD072C7-8B27-476B-B7C6-17529AD5A36D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UIApplication+firstResponder</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

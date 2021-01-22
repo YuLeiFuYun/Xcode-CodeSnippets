@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>@UIView+constaint</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension UIView {
+    func constraint(equalTo layoutGuide: UILayoutGuide, edges: NSDirectionalEdgeInsets = .zero) {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: edges.top),
+            bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: edges.bottom),
+            leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: edges.leading),
+            trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: edges.trailing)
+        ])
+    }
+    
+    func constraint(equalTo view: UIView, edges: NSDirectionalEdgeInsets = .zero) {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: view.topAnchor, constant: edges.top),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: edges.bottom),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: edges.leading),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: edges.trailing)
+        ])
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7CB4F13F-4826-4517-9946-A68DC2AB7DB8</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UIView+constaint</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

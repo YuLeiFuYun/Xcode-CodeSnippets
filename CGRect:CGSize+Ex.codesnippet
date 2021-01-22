@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>@CGRect/CGSize+Ex</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension CGRect {
+    var center: CGPoint {
+        return CGPoint(x: width / 2, y: height / 2)
+    }
+    
+    static func +(_ lhs: CGRect, _ rhs: CGRect) -&gt; CGRect {
+        return CGRect(x: lhs.minX + rhs.minX, y: lhs.minY + rhs.minY, width: lhs.width + rhs.width, height: lhs.height + rhs.height)
+    }
+    
+    static func -(_ lhs: CGRect, _ rhs: CGRect) -&gt; CGRect {
+        return CGRect(x: lhs.minX - rhs.minX, y: lhs.minY - rhs.minY, width: lhs.width - rhs.width, height: lhs.height - rhs.height)
+    }
+}
+
+extension CGSize {
+    static func +(_ lhs: CGSize, _ rhs: CGSize) -&gt; CGSize {
+        return CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
+    }
+    
+    static func -(_ lhs: CGSize, rhs: CGSize) -&gt; CGSize {
+        return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
+    }
+    
+    static func *(_ lhs: CGSize, _ rhs: CGFloat) -&gt; CGSize {
+        return CGSize(width: lhs.width * rhs, height: lhs.height * rhs)
+    }
+    
+    static func /(_ lhs: CGSize, _ rhs: CGFloat) -&gt; CGSize {
+        return CGSize(width: lhs.width / rhs, height: lhs.height / rhs)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4ACAF35C-429C-4963-89AF-E95A0895B3E0</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>CGRect/CGSize+Ex</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
