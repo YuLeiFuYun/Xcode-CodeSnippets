@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>@Utility</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func log&lt;T&gt;(
+    _ message: T, file: String = #file,
+    method: String = #function, line: Int = #line
+) {
+    #if DEBUG
+    let log = """
+    \((file as NSString).lastPathComponent)[\(line)]
+    \(method): \(message)
+    """
+    print(log)
+    #endif
+}
+
+enum Screen {
+    static let width = UIScreen.main.bounds.width
+    static let height = UIScreen.main.bounds.height
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F5F35408-B7BC-4324-B32C-F258D4FA0CEF</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Utility</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
